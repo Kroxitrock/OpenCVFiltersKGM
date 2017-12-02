@@ -169,6 +169,7 @@ namespace Filter {
 
 		}
 #pragma endregion
+	//Load image.
 	private: System::Void Browsebtn_Click(System::Object^  sender, System::EventArgs^  e) {
 		OpenFileDialog^ dial = gcnew OpenFileDialog();
 		dial->Filter = "Image(*.bmp; *.jpg)|*.bmp;*.jpg|All files (*.*)|*.*||";
@@ -181,70 +182,77 @@ namespace Filter {
 		refresh(gcnew Bitmap(dial->FileName));
 
 	}
-
+	//Negative filter.
 	private: System::Void Filterbtn_Click(System::Object^  sender, System::EventArgs^  e) {
-		cleanrefresh();
-		imwrite("filtered.jpg", filter(-1, -1, -1));
-		refresh(gcnew Bitmap("filtered.jpg"));
+		cleanimg();
+		try {
+			imwrite("filtered.jpg", filter(-1, -1, -1));
+			refresh(gcnew Bitmap("filtered.jpg"));
+		}
+		catch (int e) {}
 	}
+	//No red color filter.
 	private: System::Void redbtn_Click(System::Object^  sender, System::EventArgs^  e) {
-		cleanrefresh();
-		imwrite("filtered.jpg", filter(1, 1, 0));
-		refresh(gcnew Bitmap("filtered.jpg"));
+		cleanimg();
+		try{
+			imwrite("filtered.jpg", filter(1, 1, 0));
+			refresh(gcnew Bitmap("filtered.jpg"));
+		}
+		catch(int e){}
 	}
+	//No green color filter.
 	private: System::Void greenbtn_Click(System::Object^  sender, System::EventArgs^  e) {
-		cleanrefresh();
-		imwrite("filtered.jpg", filter(1, 0, 1));
-		refresh(gcnew Bitmap("filtered.jpg"));
+		cleanimg();
+		try {
+			imwrite("filtered.jpg", filter(1, 0, 1));
+			refresh(gcnew Bitmap("filtered.jpg"));
+		}
+		catch (int e) {}
 	}
+	//No blue color filter.
 	private: System::Void bluebtn_Click(System::Object^  sender, System::EventArgs^  e) {
-		cleanrefresh();
-		imwrite("filtered.jpg", filter(0, 1, 1));
-		refresh(gcnew Bitmap("filtered.jpg"));
+		cleanimg();
+		try {
+			imwrite("filtered.jpg", filter(0, 1, 1));
+			refresh(gcnew Bitmap("filtered.jpg"));
+		}
+		catch (int e) {}
 	}
-	void cleanrefresh() {
+	//Unload previous image from the application.
+	void cleanimg() {
 		System::Drawing::Image^ img = Src->Image;
 		Src->Image = nullptr;
 		delete img;
 	}
+	//Add new image to the application and refresh PictureBox
 	void refresh(Bitmap^ bmp) {
-		System::Drawing::Image^ img = Src->Image;
-		Src->Image = nullptr;
-		delete img;
+		cleanimg();
 		Src->Image = bmp;
 		Src->Refresh();
 	}
-	
+	//Filter the Red, Green and Blue values of the image.
 	Mat filter(int R, int G, int B) {
 		Mat buffer;
 		src.copyTo(buffer);
 		for (int r = 0; r < buffer.rows; r++) {
 			for (int c = 0; c < buffer.cols; c++) {
-				buffer.at<cv::Vec3b>(r, c)[0] *= B;//Changes the blue
-				buffer.at<cv::Vec3b>(r, c)[1] *= G;//Changes the green
-				buffer.at<cv::Vec3b>(r, c)[2] *= R;//Changes the red
+				buffer.at<cv::Vec3b>(r, c)[0] *= B;//Changes the blue color.
+				buffer.at<cv::Vec3b>(r, c)[1] *= G;//Changes the green color.
+				buffer.at<cv::Vec3b>(r, c)[2] *= R;//Changes the red color.
 			}
 		}
-		Mat editted = buffer;
 		return buffer;
 	}
-	private: System::Void savebtn_Click(System::Object^  sender, System::EventArgs^  e) {
-		// Displays a SaveFileDialog so the user can save the Image  
-		// assigned to Button2.  
+	//Save image to destination folder.
+	private: System::Void savebtn_Click(System::Object^  sender, System::EventArgs^  e) {  
 		SaveFileDialog ^ saveFileDialog1 = gcnew SaveFileDialog();
 		saveFileDialog1->Filter =
 			"JPeg Image|*.jpg|Bitmap Image|*.bmp|Gif Image|*.gif";
 		saveFileDialog1->Title = "Save an Image File";
-		saveFileDialog1->ShowDialog();
-		// If the file name is not an empty string, open it for saving.  
+		saveFileDialog1->ShowDialog();  
 		if (saveFileDialog1->FileName != "")
 		{
-			// Saves the Image through a FileStream created by  
-			// the OpenFile method.  
 			System::IO::Stream ^ fs = saveFileDialog1->OpenFile();
-			// Saves the Image in the appropriate ImageFormat based on  
-			// the file type selected in the dialog box.  
-			// Note that the FilterIndex property is one based. 
 			this->Src->Image->Save(fs,
 				System::Drawing::Imaging::ImageFormat::Jpeg);
 			

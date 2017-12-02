@@ -1,4 +1,8 @@
 ﻿  MainForm.cpp
+f:\normandy\opencv\filter\filter\MainForm.h(192): warning C4101: 'e': unreferenced local variable
+f:\normandy\opencv\filter\filter\MainForm.h(201): warning C4101: 'e': unreferenced local variable
+f:\normandy\opencv\filter\filter\MainForm.h(210): warning C4101: 'e': unreferenced local variable
+f:\normandy\opencv\filter\filter\MainForm.h(219): warning C4101: 'e': unreferenced local variable
 e:\opencv\build\include\opencv2\core\cvstd.hpp(575): warning C4793: 'cv::String::String': function compiled as native:
   	Found an intrinsic not supported in managed code
 e:\opencv\build\include\opencv2\core\mat.inl.hpp(482): warning C4793: 'cv::Mat::Mat': function compiled as native:
