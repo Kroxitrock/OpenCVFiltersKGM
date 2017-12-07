@@ -70,6 +70,7 @@ namespace Filter {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(MainForm::typeid));
 			this->Filterbtn = (gcnew System::Windows::Forms::Button());
 			this->Browsebtn = (gcnew System::Windows::Forms::Button());
 			this->Src = (gcnew System::Windows::Forms::PictureBox());
@@ -82,26 +83,31 @@ namespace Filter {
 			// 
 			// Filterbtn
 			// 
-			this->Filterbtn->Location = System::Drawing::Point(479, 41);
+			this->Filterbtn->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Filterbtn.BackgroundImage")));
+			this->Filterbtn->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			this->Filterbtn->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->Filterbtn->Location = System::Drawing::Point(479, 88);
 			this->Filterbtn->Name = L"Filterbtn";
-			this->Filterbtn->Size = System::Drawing::Size(75, 23);
+			this->Filterbtn->Size = System::Drawing::Size(84, 31);
 			this->Filterbtn->TabIndex = 0;
-			this->Filterbtn->Text = L"Negative";
 			this->Filterbtn->UseVisualStyleBackColor = true;
 			this->Filterbtn->Click += gcnew System::EventHandler(this, &MainForm::Filterbtn_Click);
 			// 
 			// Browsebtn
 			// 
+			this->Browsebtn->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"Browsebtn.BackgroundImage")));
+			this->Browsebtn->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
+			this->Browsebtn->Cursor = System::Windows::Forms::Cursors::Hand;
 			this->Browsebtn->Location = System::Drawing::Point(479, 12);
 			this->Browsebtn->Name = L"Browsebtn";
-			this->Browsebtn->Size = System::Drawing::Size(75, 23);
+			this->Browsebtn->Size = System::Drawing::Size(84, 31);
 			this->Browsebtn->TabIndex = 1;
-			this->Browsebtn->Text = L"Browse";
 			this->Browsebtn->UseVisualStyleBackColor = true;
 			this->Browsebtn->Click += gcnew System::EventHandler(this, &MainForm::Browsebtn_Click);
 			// 
 			// Src
 			// 
+			this->Src->BackColor = System::Drawing::SystemColors::ControlDark;
 			this->Src->Location = System::Drawing::Point(12, 12);
 			this->Src->Name = L"Src";
 			this->Src->Size = System::Drawing::Size(461, 333);
@@ -111,41 +117,49 @@ namespace Filter {
 			// 
 			// redbtn
 			// 
-			this->redbtn->Location = System::Drawing::Point(479, 70);
+			this->redbtn->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"redbtn.BackgroundImage")));
+			this->redbtn->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			this->redbtn->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->redbtn->Location = System::Drawing::Point(479, 125);
 			this->redbtn->Name = L"redbtn";
-			this->redbtn->Size = System::Drawing::Size(75, 23);
+			this->redbtn->Size = System::Drawing::Size(84, 31);
 			this->redbtn->TabIndex = 4;
-			this->redbtn->Text = L"Rem Red";
 			this->redbtn->UseVisualStyleBackColor = true;
 			this->redbtn->Click += gcnew System::EventHandler(this, &MainForm::redbtn_Click);
 			// 
 			// greenbtn
 			// 
-			this->greenbtn->Location = System::Drawing::Point(479, 99);
+			this->greenbtn->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"greenbtn.BackgroundImage")));
+			this->greenbtn->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			this->greenbtn->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->greenbtn->Location = System::Drawing::Point(479, 162);
 			this->greenbtn->Name = L"greenbtn";
-			this->greenbtn->Size = System::Drawing::Size(75, 23);
+			this->greenbtn->Size = System::Drawing::Size(84, 31);
 			this->greenbtn->TabIndex = 5;
-			this->greenbtn->Text = L"Rem Green";
 			this->greenbtn->UseVisualStyleBackColor = true;
 			this->greenbtn->Click += gcnew System::EventHandler(this, &MainForm::greenbtn_Click);
 			// 
 			// bluebtn
 			// 
-			this->bluebtn->Location = System::Drawing::Point(479, 128);
+			this->bluebtn->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"bluebtn.BackgroundImage")));
+			this->bluebtn->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			this->bluebtn->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->bluebtn->Location = System::Drawing::Point(479, 199);
 			this->bluebtn->Name = L"bluebtn";
-			this->bluebtn->Size = System::Drawing::Size(75, 23);
+			this->bluebtn->Size = System::Drawing::Size(84, 31);
 			this->bluebtn->TabIndex = 6;
-			this->bluebtn->Text = L"Rem Blue";
 			this->bluebtn->UseVisualStyleBackColor = true;
 			this->bluebtn->Click += gcnew System::EventHandler(this, &MainForm::bluebtn_Click);
 			// 
 			// savebtn
 			// 
-			this->savebtn->Location = System::Drawing::Point(479, 322);
+			this->savebtn->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"savebtn.BackgroundImage")));
+			this->savebtn->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			this->savebtn->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->savebtn->Location = System::Drawing::Point(479, 314);
 			this->savebtn->Name = L"savebtn";
-			this->savebtn->Size = System::Drawing::Size(75, 23);
+			this->savebtn->Size = System::Drawing::Size(84, 31);
 			this->savebtn->TabIndex = 7;
-			this->savebtn->Text = L"Save";
 			this->savebtn->UseVisualStyleBackColor = true;
 			this->savebtn->Click += gcnew System::EventHandler(this, &MainForm::savebtn_Click);
 			// 
@@ -153,6 +167,7 @@ namespace Filter {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->ClientSize = System::Drawing::Size(566, 357);
 			this->Controls->Add(this->savebtn);
 			this->Controls->Add(this->bluebtn);
@@ -255,9 +270,11 @@ namespace Filter {
 			System::IO::Stream ^ fs = saveFileDialog1->OpenFile();
 			this->Src->Image->Save(fs,
 				System::Drawing::Imaging::ImageFormat::Jpeg);
-			
+			cleanimg();
+			remove("filtered.jpg");
 			fs->Close();
 		}
 	}
+	//References: http://www.cplusplus.com
 };
 }
